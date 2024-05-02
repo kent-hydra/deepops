@@ -1,9 +1,10 @@
 ---
-- include: ../container/docker.yml
+
+- ansible.builtin.import_playbook: ../container/docker.yml
 
 - hosts: "{{ hostlist | default('all') }}"
   become: yes
   tasks:
     - name: configure prometheus slurm exporter
-      include_role:
+      ansible.builtin.include_role:
         name: prometheus-slurm-exporter
